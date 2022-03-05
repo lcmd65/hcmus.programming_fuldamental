@@ -6,8 +6,8 @@ void giai1();
 void giai2();
 float a, b, c, x0, x, d;
 float n = 0;
-
 string ketqua;
+
 int main(){ 
     cout<<"Nhap he so cua phuong trinh bac hai a.x^2 + b.x + c";
     cout<<"\na = "; 
