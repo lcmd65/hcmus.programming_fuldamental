@@ -38,8 +38,7 @@ int giaiPTB2(float a, float b, float c, float& x, float& x1, float& x2){
     }
 }
 
-void xuat (int n,float x,float x1,float x2)
-{
+void xuat (int n, float x, float x1, float x2){
     switch(n){
         case 0:
             cout << "\nPhuong trinh vo nghiem ";
@@ -57,11 +56,11 @@ void xuat (int n,float x,float x1,float x2)
 
 int main()
 {
-	float a, b, c, x, x1, x2;
+    float a, b, c, x, x1, x2;
     int n;
-	nhap(a,b,c);
+    nhap(a,b,c);
     if(a==0)   n = giaiPTB1(b, c, x);
     else    n = giaiPTB2(a, b, c, x, x1, x2);
-	xuat(n,x,x1,x2);
-	return 0;
+    xuat(n,x,x1,x2);
+    return 0;
 }
