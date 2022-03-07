@@ -69,4 +69,4 @@ int main()
 	int K = giaiPTB2(a, b, c, x, x1, x2);
 	xuat(K, x, x1, x2);
 	return 0;
-}
+}noi;
