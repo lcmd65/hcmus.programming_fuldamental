@@ -33,7 +33,7 @@ void ketThuc();
 // fuction
 
 int GetRandom(int min,int max){
-    int a = min + (int)(rand()*(max-min+1.0)/(1.0+RAND_MAX));
+    int a = 1+ min + (int)(rand()*(max-min+1.0)/(1.0+RAND_MAX));
     if (a!=0){
         return a;
     }
@@ -57,7 +57,7 @@ int chonMenu(){
 
 void menuBT2(DanhSach &list){
 
-    cout << "--------------MENU--------------";
+    cout << "--------------MENU--------------"<<endl;
     cout << "Hay chon 1 so ung voi chuc nang yeu cau" << endl;
     cout << "1: Xuat day phan so"<< endl;
     cout << "2: Nhap them 1 phan so"<< endl;
@@ -84,6 +84,7 @@ void menuBT2(DanhSach &list){
         case 8: 
         case 0: 
             cout << "out";
+            delete []list.arr;
             exit(1);
             break;
     }
@@ -108,8 +109,8 @@ void xuatPhanSo(DanhSach &list){
 }
 
 void taoMotGiaTri(PhanSo &a){
-    a.tu = GetRandom(1000,1000);
-    a.mau = GetRandom(1000,1000);
+    a.tu = GetRandom(-1000,1000);
+    a.mau = GetRandom(-1000,1000);
 }
 
 void ganDanhSach(DanhSach &list){
@@ -141,6 +142,7 @@ int main(){
     cout << "Nhap so phan tu";
     cin >> list.n ;
     list.arr = new PhanSo[list.n];
+    ganDanhSach(list);
 	while (true){
 		menuBT2(list);
 	}
