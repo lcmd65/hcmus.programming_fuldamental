@@ -214,5 +214,6 @@ int main(){
 	while (true){
 		menuBT2(list);
 	}
+    delete []arr;
     return 0;
 }
