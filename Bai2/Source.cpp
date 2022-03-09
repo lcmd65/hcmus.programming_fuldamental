@@ -135,8 +135,9 @@ void menuBT2(DanhSach& list)
     }
     break;
     case 7:
+            xuatPSNT(list);
+            break;
     case 8:
-    case 0:
         cout << "out";
         delete[]list.arr;
         exit(1);
@@ -285,6 +286,33 @@ void sapXepDay(DanhSach& list)
                 list.arr[j] = tam;
             }
         }
+}
+
+bool checkSNT(int n){
+    n = abs(n);
+    if(n<2) return false;
+    else if(n==2){
+        return true;
+    }
+    else{
+        for(int i=2; i<sqrt(n); i++){
+            if(n%i==0)  return false;
+        }
+        return true;
+    }
+}
+
+bool checkPSNT(phanso ps){
+    ps = rutgonPhanSo(ps);
+    if(checkSNT(ps.tu)==true && checkSNT(ps.mau)==true) return true;
+    else    return false;
+}
+
+void xuatPSNT(danhsach list){
+     for(int i=0; i<list.n; i++){
+        if(checkPSNT(list.arr[i])==true)
+            xuatMotPhanSo(list.arr[i]);
+    }
 }
 
 int main() {
