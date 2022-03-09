@@ -163,9 +163,13 @@ void xuatPhanSo(DanhSach& list) {
     }
 }
 
-void taoMotGiaTri(PhanSo& a) {
-    a.tu = GetRandom(-1000, 1000);
-    a.mau = GetRandom(-1000, 1000);
+void taoMotGiaTri(PhanSo &a){
+    do{
+        a.tu = GetRandom(-1000,1000);
+        do{
+            a.mau = GetRandom(-1000,1000);
+        }while(a.mau==0);
+    }while(a.tu%a.mau==0);
 }
 
 void ganDanhSach(DanhSach& list) {
