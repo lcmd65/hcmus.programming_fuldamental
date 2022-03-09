@@ -364,6 +364,7 @@ int main(){
         #pragma omp section
         {
             DanhSach list;
+            cout << "CHUONG TRINH SE KET THUC SAU 20 GIAY!!!\n";
             do{
                 cout << "Nhap so phan tu: ";
                 cin >> list.n;
