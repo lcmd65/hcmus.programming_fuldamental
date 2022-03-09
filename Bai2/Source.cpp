@@ -30,6 +30,9 @@ void sapXepDay(DanhSach& list);
 PhanSo rutgonPhanSo(PhanSo ps);
 void timCacPhanSo();
 void ketThuc();
+bool checkSNT(int n);
+bool checkPSNT(phanso ps);
+void xuatPSNT(danhsach list);
 
                                                    // FUNCTION //
 
