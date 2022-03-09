@@ -19,10 +19,10 @@ struct danhsach {
 };
 typedef struct danhsach DanhSach;
 
-void menuBT2();
-void nhapMotPhanSo(DanhSach& list);
+void menuBT2(DanhSach &list);
+void nhapMotPhanSoVaoDay(DanhSach& list);
 void xuatPhanSo(DanhSach& list);
-void nhapMotPhanSo(DanhSach& list);
+PhanSo nhapMotPhanSo(PhanSo & ps);
 bool xoaMotPhanSo(DanhSach &list,int pos);
 bool suaGiaTriPhanSo(DanhSach &list , int pos);
 PhanSo tinhTongDayPhanSo(DanhSach ds);
@@ -33,6 +33,7 @@ void ketThuc();
 
                                                    // FUNCTION //
 
+// Ham lay gia tri ngau nhien
 int GetRandom(int min, int max) {
     int a = 1 + min + (int)(rand() * (max - min + 1.0) / (1.0 + RAND_MAX));
     if (a != 0) {
@@ -72,7 +73,7 @@ void menuBT2(DanhSach& list)
     cout << "5: Tinh tong day phan so" << endl;
     cout << "6: Sap xep lai day theo thu tu tang" << endl;
     cout << "7: Tim ca phan so (sau khi toi gian) co tu va mau deu la cac so nguyen to" << endl;
-    cout << "8: Ket thuc, giai phong bo nho ma mang chiem giu và thoat chuong trinh" << endl;
+    cout << "8: Ket thuc, giai phong bo nho ma mang chiem giu vÃ  thoat chuong trinh" << endl;
 
     int temp = chonMenu();
     switch (temp) {
@@ -80,7 +81,7 @@ void menuBT2(DanhSach& list)
         xuatPhanSo(list);
         break;
     case 2:
-        nhapMotPhanSo(list);
+        nhapMotPhanSoVaoDay(list);
         break;
     case 3:
     {
@@ -170,7 +171,8 @@ void ganDanhSach(DanhSach& list) {
     }
 }
 
-void nhapMotPhanSo(DanhSach& list)
+// Ham tu dong nhap them 1 phan so vao cuoi mang
+void nhapMotPhanSoVaoDay(DanhSach& list)
 {
     PhanSo* ar = new PhanSo[list.n + 1];
     for (int i = 0; i < list.n; i++) {
@@ -178,11 +180,11 @@ void nhapMotPhanSo(DanhSach& list)
     }
     delete[] list.arr;
     list.arr = new PhanSo[list.n + 1];
-    list.n = list.n + 1;
-    for (int i = 0; i < list.n; i++) {
+    list.n = int(list.n + 1);
+    for (int i = 0; i < list.n-1; i++) {
         list.arr[i] = ar[i];
     }
-    taoMotGiaTri(list.arr[list.n]);
+    list.arr[list.n-1] = nhapMotPhanSo(list.arr[list.n-1]);
     delete[]ar;
 }
 //XOA 1 PHAN TU TRONG MANG 
@@ -212,8 +214,9 @@ PhanSo nhapMotPhanSo(PhanSo& ps)
 bool suaGiaTriPhanSo(DanhSach& list, int pos)
 {
     PhanSo ps;
-    if (pos < 0 || pos >= list.n)
-        return false; 
+    if (pos < 0 || pos >= list.n){
+        return false;
+    } 
     else {
         list.arr[pos] = nhapMotPhanSo(ps);
     }
