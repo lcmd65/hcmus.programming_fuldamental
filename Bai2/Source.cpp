@@ -84,7 +84,13 @@ void menuBT2(DanhSach& list)
         xuatPhanSo(list);
         break;
     case 2:
-        nhapMotPhanSoVaoDay(list);
+        int vitri;
+        cout << "Nhap vi tri can them";
+        cin >> vitri;
+        if(vitri <0 || vitri>list.n+1){
+            break;
+        }
+        nhapMotPhanSoVaoDay(list, vitri);
         break;
     case 3:
     {
@@ -180,19 +186,22 @@ void ganDanhSach(DanhSach& list) {
 }
 
 // Ham tu dong nhap them 1 phan so vao cuoi mang
-void nhapMotPhanSoVaoDay(DanhSach& list)
+void nhapMotPhanSoVaoDay(DanhSach& list, int vitri)
 {
     PhanSo* ar = new PhanSo[list.n + 1];
-    for (int i = 0; i < list.n; i++) {
+    for (int i = 0; i < vitri; i++) {
         ar[i] = list.arr[i];
+    }
+    for (int i = vitri; i < list.n; i++) {
+        ar[i+1] = list.arr[i];
     }
     delete[] list.arr;
     list.arr = new PhanSo[list.n + 1];
     list.n = int(list.n + 1);
-    for (int i = 0; i < list.n-1; i++) {
+    for (int i = 0; i < list.n; i++) {
         list.arr[i] = ar[i];
     }
-    list.arr[list.n-1] = nhapMotPhanSo(list.arr[list.n-1]);
+    list.arr[vitri] = nhapMotPhanSo(list.arr[vitri]);
     delete[]ar;
 }
 //XOA 1 PHAN TU TRONG MANG 
