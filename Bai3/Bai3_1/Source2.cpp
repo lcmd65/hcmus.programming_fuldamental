@@ -148,7 +148,6 @@ void taoMotMangDong(DanhSach &list, int size){
     list.n = size;
     list.arr = new Covid19[list.n];
     for(int i= 0; i< list.n; i++){
-        cout << "Nhap thong tin benh nhan thu"<< i+1;
         themMotPhanTuDS(list.arr[i]);
     }
 }
